@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import pickle
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -52,15 +53,15 @@ results=[]
 
 # 6. Hyperparameter tuning:
 # 6.1. GridSearchCV:
-param_grid={
-    'n_estimators':[100,200,300,400,500],
-    'learning_rate':[0.01,0.1,1,10,100]
-}
-gbc=GradientBoostingClassifier()
-grid=GridSearchCV(gbc,param_grid=param_grid,cv=kf)
-grid.fit(x_train_scaled,y_train)
-print(grid.best_params_)
-print(grid.best_score_)
+# param_grid={
+#     'n_estimators':[100,200,300,400,500],
+#     'learning_rate':[0.01,0.1,1,10,100]
+# }
+# gbc=GradientBoostingClassifier()
+# grid=GridSearchCV(gbc,param_grid=param_grid,cv=kf)
+# grid.fit(x_train_scaled,y_train)
+# print(grid.best_params_)
+# print(grid.best_score_)
 
 # ✅ from the GridSearchCV results, we can see that the best parameters are n_estimators=400 and learning_rate=0.1
 
@@ -72,4 +73,12 @@ print(grid.best_score_)
 
 # ✅ from the RandomizedSearchCV results, we can observe that since the number of iterations is small, the best parameters are not the same as the GridSearchCV results. However, the best score is the same as the GridSearchCV results.
 
+# 7. Evaluate model with the best parameters:
+gbc=GradientBoostingClassifier(n_estimators=400,learning_rate=0.1)
+gbc.fit(x_train_scaled,y_train)
+print(gbc.score(x_test_scaled,y_test))
 
+# ✅ from the results, we can see that the accuracy score is 0.9507042253521126
+
+# 8. Save model:
+pickle.dump(gbc,open('fetal_health_model.pkl','wb'))
