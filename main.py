@@ -29,5 +29,25 @@ scaler=StandardScaler()
 x_train_scaled=scaler.fit_transform(X_train)
 x_test_scaled=scaler.transform(X_test)
 
+# 5. Evaluate model:
+
+kf=KFold(n_splits=5,shuffle=True,random_state=42)
+models={
+    'knn':KNeighborsClassifier(),
+    'svc':SVC(),
+    'dtc':DecisionTreeClassifier(),
+    'rfc':RandomForestClassifier(),
+    'gbc':GradientBoostingClassifier()
+}
+results=[]
+
+# for model in models.values():
+#     result=cross_val_score(model,x_train_scaled,y_train,cv=kf)
+#     results.append(result)
+
+# plt.boxplot(results,labels=models.keys())
+# plt.show()
+
+# ✅ from the cross validation results, we can see that the best model is GradientBoostingClassifier
 
 
