@@ -50,4 +50,26 @@ results=[]
 
 # ✅ from the cross validation results, we can see that the best model is GradientBoostingClassifier
 
+# 6. Hyperparameter tuning:
+# 6.1. GridSearchCV:
+param_grid={
+    'n_estimators':[100,200,300,400,500],
+    'learning_rate':[0.01,0.1,1,10,100]
+}
+gbc=GradientBoostingClassifier()
+grid=GridSearchCV(gbc,param_grid=param_grid,cv=kf)
+grid.fit(x_train_scaled,y_train)
+print(grid.best_params_)
+print(grid.best_score_)
+
+# ✅ from the GridSearchCV results, we can see that the best parameters are n_estimators=400 and learning_rate=0.1
+
+# 6.2. RandomizedSearchCV:
+# gridRCV=RandomizedSearchCV(gbc,param_distributions=param_grid,cv=kf,n_iter=2)
+# gridRCV.fit(x_train_scaled,y_train)
+# print(gridRCV.best_params_)
+# print(gridRCV.best_score_)
+
+# ✅ from the RandomizedSearchCV results, we can observe that since the number of iterations is small, the best parameters are not the same as the GridSearchCV results. However, the best score is the same as the GridSearchCV results.
+
 
