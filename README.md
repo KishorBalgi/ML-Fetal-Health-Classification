@@ -1,1 +1,31 @@
 # Fetal Health Classification:
+
+This repository contains machine learning model for classifying fetal health based on the collected dataset from Kaggle ( [Dataset](https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification) ). The models were trained and evaluated using various classification algorithms, including K-Nearest Neighbors (KNN), Support Vector Machines (SVM), Decision Tree, Random Forest, and Gradient Boosting classifiers. The best-performing model was determined to be the Gradient Boosting Classifier( n_estimators=400,learning_rate=0.1 ).
+
+## Repository Contents
+
+- `data/`: This directory contains the dataset files obtained from Kaggle.
+- `main.py`: This python file contains all the code realted to the pre-processing, evaluating, hyperparameter tuning and training.
+- `fetal_health_model.pkl`: Trained model .pkl file.
+- `README.md`: This file, providing an overview of the repository and its contents.
+
+## Required Python Libraries
+
+- sklearn
+- numpy
+- pandas
+- pickle
+- matplotlib
+
+Make sure these libraries are installed in your Python environment before running the notebooks.
+
+## Usage
+
+To utilize the models and reproduce the results:
+
+1. Download the dataset from Kaggle and place it in the `data/` directory.
+2. In the main.py file some line are commentd which are simply used to either pre-processing, standardization, evaluation, hyperparameter tuning. Uncomment these line as per requirement.
+
+## License
+
+The code in this repository is licensed under the [MIT License](LICENSE). Feel free to use and modify the code for your purposes.
