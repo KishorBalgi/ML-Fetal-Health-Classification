@@ -19,6 +19,16 @@ This repository contains machine learning model for classifying fetal health bas
 
 Make sure these libraries are installed in your Python environment before running the notebooks.
 
+## Implementation:
+
+### Model Evaluation:
+![image](https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/07be37f5-65e7-4635-ad90-625aa897c43b)
+
+
+### Hyperparameter Tuning:
+![image](https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/f452941e-10cf-4a0a-aa9a-6be9b159ee72)
+
+
 ## Usage
 
 To utilize the models and reproduce the results:
