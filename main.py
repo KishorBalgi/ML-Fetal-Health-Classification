@@ -10,10 +10,10 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import mean_squared_error,confusion_matrix,classification_report
 
 # import csv file fetal_health.csv 
-df = pd.read_csv('fetal_health.csv')
-
+df = pd.read_csv('./data/fetal_health.csv')
 # Preprocessing data:
 # 1. Check for missing values
 # print(df.isna().sum().sort_values())
@@ -60,7 +60,10 @@ results=[]
 # gbc=GradientBoostingClassifier()
 # grid=GridSearchCV(gbc,param_grid=param_grid,cv=kf)
 # grid.fit(x_train_scaled,y_train)
+# print("GridSearchCV results:")
+# print("Best parameters: ")
 # print(grid.best_params_)
+# print("Best score: ")
 # print(grid.best_score_)
 
 # ✅ from the GridSearchCV results, we can see that the best parameters are n_estimators=400 and learning_rate=0.1
@@ -68,7 +71,10 @@ results=[]
 # 6.2. RandomizedSearchCV:
 # gridRCV=RandomizedSearchCV(gbc,param_distributions=param_grid,cv=kf,n_iter=2)
 # gridRCV.fit(x_train_scaled,y_train)
+# print("RandomizedSearchCV results:")
+# print("Best parameters: ")
 # print(gridRCV.best_params_)
+# print("Best score: ")
 # print(gridRCV.best_score_)
 
 # ✅ from the RandomizedSearchCV results, we can observe that since the number of iterations is small, the best parameters are not the same as the GridSearchCV results. However, the best score is the same as the GridSearchCV results.
@@ -76,9 +82,18 @@ results=[]
 # 7. Evaluate model with the best parameters:
 gbc=GradientBoostingClassifier(n_estimators=400,learning_rate=0.1)
 gbc.fit(x_train_scaled,y_train)
+print("Accuracy score: ")
 print(gbc.score(x_test_scaled,y_test))
+
+# 8. Score, Confusion matrix and Classification report:
+y_pred=gbc.predict(x_test_scaled)
+print("MSE: ",mean_squared_error(y_test,y_pred))
+print("Confusion matrix: ")
+print(confusion_matrix(y_test,y_pred))
+print("Classification report: ")
+print(classification_report(y_test,y_pred))
 
 # ✅ from the results, we can see that the accuracy score is 0.9507042253521126
 
-# 8. Save model:
+# 9. Save model:
 pickle.dump(gbc,open('fetal_health_model.pkl','wb'))
