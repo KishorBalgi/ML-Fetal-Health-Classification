@@ -23,43 +23,50 @@ Make sure these libraries are installed in your Python environment before runnin
 
 ### Train Test Splitting:
 
-    First we split the data into training and testing data with ration of 4:1 and stratified.
+First we split the data into training and testing data with ration of 4:1 and stratified.
 
 ### Scaling:
 
-    The the data is scaled using Standardization, for this I have used SK learn StandardScaler.
+The the data is scaled using Standardization, for this I have used SK learn StandardScaler.
 
 ### Model Evaluation:
 
-    The best performing model is selected using KFold(split=5) cross validation using the following models.
+The best performing model is selected using KFold(split=5) cross validation using the following models.
 
-    - KNN
-    - SVM
-    - Decision Tree Classifier
-    - Random Forest Classifier
-    - Gradient Boosting Classifier
+- KNN
+- SVM
+- Decision Tree Classifier
+- Random Forest Classifier
+- Gradient Boosting Classifier
+<div align="center">
+    <img src="https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/07be37f5-65e7-4635-ad90-625aa897c43b" alt="Image description">
+</div>
 
-![image](https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/07be37f5-65e7-4635-ad90-625aa897c43b)
-
-    From the scores optained and plotting a box plot of these scores we can observe that Gradient Boosting Classifier performs better than other classifiers.
+From the scores optained and plotting a box plot of these scores we can observe that Gradient Boosting Classifier performs better than other classifiers.
 
 ### Hyperparameter Tuning:
 
-    Now, we have selected Gradient Boosting Classifier(GBC) to train our model, it is necessary to choose the right hyperparameters, this is done with the help of GridSearchCV and RandomizedSearchCV.
+Now, we have selected Gradient Boosting Classifier(GBC) to train our model, it is necessary to choose the right hyperparameters, this is done with the help of GridSearchCV and RandomizedSearchCV.
 
-![image](https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/f452941e-10cf-4a0a-aa9a-6be9b159ee72)
+<div align="center">
+    <img src="https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/f452941e-10cf-4a0a-aa9a-6be9b159ee72" alt="Image description">
+</div>
 
-    From the scores obtained from the GridSearchCV and RandomizedSearchCV the GCV gives better results as compared to RCV.
+From the scores obtained from the GridSearchCV and RandomizedSearchCV the GCV gives better results as compared to RCV.
 
-    We observe that the Learing Rate = 0.1 and n-estimators = 400 gives the best score of .9488 .
+We observe that the Learing Rate = 0.1 and n-estimators = 400 gives the best score of .9488 .
 
 ### Train the model:
 
-    we can now train the model using the best parameters obtained form hyperparameter tuning ( i.e, Learing Rate = 0.1 and n-estimators = 400)
+we can now train the model using the best parameters obtained form hyperparameter tuning ( i.e, Learing Rate = 0.1 and n-estimators = 400)
 
-    Accuracy: 0.95
+Accuracy: 0.95
 
 ### Score:
+
+<div align="center">
+    <img src="https://github.com/KishorBalgi/ML-Fetal-Health-Classification/assets/75678927/4b28beab-1507-464e-890c-5054022b1ccf" alt="Image description">
+</div>
 
 ## Usage
 
